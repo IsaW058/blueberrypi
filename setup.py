@@ -26,6 +26,9 @@ setup(
         'console_scripts': [
             'arm_disarm = blueberrypi.bluerov2_arm:yay',
             'dance = blueberrypi.bluerov2_dance:main',
+            'depthPID = blueberrypi.depthPID:main',
+            'pressure_depth = blueberrypi.pressure_depth:main',
+            'target_depths = blueberrypi.target_depths:main',
         ],
     },
 )
