@@ -17,6 +17,7 @@ class Move(Node):
 
     def move(self, x, y, z, r):
         msg = ManualControl()
+        # msg = ManualControl(x=x,y=y,z=z,r=r)
         msg.x = x
         msg.y = y
         msg.z = z
@@ -25,105 +26,102 @@ class Move(Node):
 
     def dance(self):
         self.start_time_sec = self.get_clock().now().seconds_nanoseconds()[0] # current seconds (seconds, nanoseconds)
-        self.move(20.0, 0.0, 0.0, 0.0) #leave spawn to center for 8 seconds, x, y, z, r
+        while self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec < 4 and rclpy.ok():
+            self.move(20.0, 0.0, 0.0, 0.0) #leave spawn to center for 8 seconds, x, y, z, r
 
-        while True:
-    
-           if (self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec >= 0):
+        while self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec < 8 and rclpy.ok():
+        #    if (self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec >= 0):
                self.move(20.0, 0.0, 5.0, 0.0) #move upwards and slightly forward at the same time “And now your song is on repeat”
                self.get_logger().info("yayayayya ")
-               break
-        
         self.get_logger().info("yayayayayayyayyaayayayayay ")
     
 
-        while True:
+        while self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec < 8 and rclpy.ok():
             if (self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec >= 4):
                 self.move(0.0, -20.0, 0.0, 0.0) #move right “And I’m dancin’ on to your heartbeat”
                 self.get_logger().info("yayayayya ")
-                break
         self.get_logger().info("yayayayya ")
 
-        while True:
+        while self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec < 8 and rclpy.ok():
             if (self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec >= 8):
                 self.move(10.0, 50.0, -20.0, 20.0) #move in a circle going down “And… incomplete”
                 break
         self.get_logger().info("yayayayya ")
 
-        while True:
+        while self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec < 8 and rclpy.ok():
             if (self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec >= 13):
                 self.move(0.0, -20.0, 0.0, 0.0) #move to center “So… truth”
                 self.get_logger().info("yayayayya ")
                 break
 
-        while True:
+        while self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec < 8 and rclpy.ok():
             if (self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec >= 15):
                 self.move(20.0, 0.0, 10.0, 0.0) #move forward toward us and up “I… symphony”
                 self.get_logger().info("yayayayya ")
                 break
 
-        while True:
+        while self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec < 8 and rclpy.ok():
             if (self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec >= 20):
                 self.move(5.0, 0.0, 20.0, 0.0) #bop up “Will… go”
                 
                 self.get_logger().info("yayayayya ")
                 break
 
-        while True:
+        while self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec < 8 and rclpy.ok():
             if (self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec >= 24):
                 self.move(10.0, 10.0, 0.0, 20.0) #revolve “Symphony”
                 self.get_logger().info("yayayayya ")
                 break
 
-        while True:
+        while self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec < 8 and rclpy.ok():
             if (self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec >= 28):
                 self.move(0.0, 0.0, 0.0, 0.0) #stay still on surface
                 self.get_logger().info("yayayayya ")
                 break
 
-        while True:
+        while self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec < 8 and rclpy.ok():
             if (self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec >= 32):
                 self.move(-10.0, 0.0, -20.0, 0.0) #go down “will you hold me tight and not let go”
                 self.get_logger().info("yayayayya ")
                 break
 
-        while True:
+        while self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec < 8 and rclpy.ok():
             if (self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec >= 36):
                 self.move(20.0, -20.0, 0.0, 0.0) #go forward/right 45 “Ah, ah, ah”
                 self.get_logger().info("yayayayya ")
                 break
 
-        while True:
+        while self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec < 8 and rclpy.ok():
             if (self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec >= 39):
                 self.move(0.0, 20.0, -10.0, 0.0) #go left straight “interlude”
                 self.get_logger().info("yayayayya ")
                 break
 
-        while True:
+        while self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec < 8 and rclpy.ok():
             if (self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec >= 44):
                 self.move(-20.0, -20.0, -10.0, 0.0) #go backward/right ˚45
                 self.get_logger().info("yayayayya ")
                 break
 
-        while True:
+        while self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec < 8 and rclpy.ok():
             if (self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec >= 47):
                 self.move(-20.0, 0.0, 20.0, 0.0) #go upwards backwards
                 self.get_logger().info("yayayayya ")
                 break
 
-        while True:
+        while self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec < 8 and rclpy.ok():
             if (self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec >= 51):
                 self.move(0.0, 0.0, 0.0, 20.0) #spin
                 self.get_logger().info("yayayayya ")
                 break
 
-        while True:
+        while self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec < 8 and rclpy.ok():
             if (self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec >= 54):
                 self.move(0.0, 0.0, -20.0, 0.0) #go down “And … heartbeat”
                 self.get_logger().info("yayayayya ")
                 break
 
-        while True:
+        while self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec < 8 and rclpy.ok():
             if (self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec >= 60):
                 self.move(0.0, 0.0, -20.0, 40.0) #stay down and rotate “so if you want the truth”
                 self.get_logger().info("yayayayya ")
@@ -143,6 +141,13 @@ class Move(Node):
                 break
 
         return
+    
+    def test(self):
+        self.start_time_sec = self.get_clock().now().seconds_nanoseconds()[0]
+        while self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec < 5 and rclpy.ok():
+            self.move(30.0, 0.0, 0.0, 0.0)
+        while self.get_clock().now().seconds_nanoseconds()[0] - self.start_time_sec < 10 and rclpy.ok():
+            self.move(0.0, 30.0, 0.0, 0.0)
 
 #class MinimalClientAsync(Node):
 
