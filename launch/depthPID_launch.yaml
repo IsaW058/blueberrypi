@@ -1,0 +1,16 @@
+launch:
+- node:
+    pkg: "blueberrypi"
+    exec: "depthPID"
+    name: "depth_PID"
+    namespace: ""
+- node:
+    pkg: "blueberrypi"
+    exec: "pressure_depth"
+    name: "PressureToDepth"
+    namespace: ""
+- node:
+    pkg: "blueberrypi"
+    exec: "target_depths"
+    name: "PubTargetDepths"
+    namespace: ""
