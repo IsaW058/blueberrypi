@@ -6,7 +6,7 @@ class SendDepth (Node):
     def __init__(self):
         super().__init__("depth_publisher")    # names the node when running
 
-        self.depth_time_list = [[1.0, 30.0], [3.0, 60]]
+        self.depth_time_list = [[3.0, 500.0]]
 
         self.start_time = self.get_time()
 
@@ -27,12 +27,30 @@ class SendDepth (Node):
     
     def get_time(self):
         return float(self.get_clock().now().seconds_nanoseconds()[0] + (10 ** -9 * self.get_clock().now().seconds_nanoseconds()[1]))
+    
+    def get_depths(self):
+        flag = False
+        exit = True
+        counter = 1
+        while exit:
+            if flag == False:
+                self.depth_time_list[0][0] = input("Enter depth: ")
+                self.depth_time_list[0][1] = input("Enter time for that depth: ")
+                flag = True
+            else:
+                temp1 = input(f"Enter depth #{counter} or \"meow\" to exit" )
+                temp2 = input(f"Enter time#{counter}: ")
+                if(temp1 == "meow"):
+                    break
+                else:
+                    self.depth_time_list.append([temp1, temp2])
 
 def main(args=None):
     rclpy.init(args=args)
     node = SendDepth()
 
     try:
+#        node.get_depths()
         node.publish_depths()
     except KeyboardInterrupt:
         print("\nKeyboardInterrupt received, shutting down...")

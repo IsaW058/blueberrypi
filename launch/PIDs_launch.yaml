@@ -1,0 +1,32 @@
+launch:
+- node:
+    pkg: "blueberrypi"
+    exec: "depth_pid"
+    name: "depthPID"
+    namespace: ""
+- node:
+    pkg: "blueberrypi"
+    exec: "pressure_depth"
+    name: "PressureToDepth"
+    namespace: ""
+- node:
+    pkg: "blueberrypi"
+    exec: "target_depths"
+    name: "PubTargetDepths"
+    namespace: ""
+- node:
+    pkg: "blueberrypi"
+    exec: "heading_pid"
+    name: "HeadingPID"
+    namespace: ""
+- node:
+    pkg: "blueberrypi"
+    exec: "movement"
+    name: "MotorControl"
+    namespace: ""
+- node:
+    pkg: "blueberrypi"
+    exec: "move_forward"
+    name: "TranslationalMovement"
+    namespace: ""
+
