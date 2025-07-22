@@ -8,7 +8,7 @@ from std_msgs.msg import Float32
 
 STARTING_PRESSURE = 0 #volts
 G = 9.81
-TARGET_DEPTH = 3.0 #relative to starting depth?
+TARGET_DEPTH = 0.0 
 KP = 14
 KI = .55
 KD = 0
@@ -24,7 +24,7 @@ class PressureSensor(Node):
         self.prev_e = None
         self.current_depth = None
         self.U = 0
-        self.integral_e = 0
+        self.integral_e = 0.0
         self.start_time = 0
 
         # self.pressure_sub = self.create_subscription(
@@ -36,7 +36,7 @@ class PressureSensor(Node):
 
         self.pub = self.create_publisher(
             ManualControl,        # the message type
-            "/manual_control",    # the topic name
+            "depth_movement",    # the topic name
             10              # QOS (will be covered later)
         )
 
@@ -84,8 +84,9 @@ class PressureSensor(Node):
             self.get_logger().info(f"integral: {self.integral_e}")
             de_dt = KD * (self.current_e - self.prev_e) / (self.current_time - self.prev_time)
             self.get_logger().info(f"de/dt: {de_dt}")
+            if self.integral_e > 30:
+                self.integral_e = 30
             self.U = -1 * (KPe + self.integral_e + de_dt)
-
         self.get_logger().info(str(self.U))
 
         self.move(0.0, 0.0, float(self.U), 0.0)
@@ -117,14 +118,3 @@ def main(args=None):
         pressure_node.destroy_node()
         if rclpy.ok():
             rclpy.shutdown()
-
-def calculate_depth(pressure):
-    """
-    Function that calculates the depth in water given a pressure
-   
-    @param pressure: the pressure in pascals
-
-    @ret the depth in meters
-    """
-
-    return (pressure - STARTING_PRESSURE)/G/1000

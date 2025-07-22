@@ -1,0 +1,11 @@
+launch:
+- node:
+    pkg: "blueberrypi"
+    exec: "arm_disarm"
+    name: "arm_disarm_1"
+    namespace: ""
+- node:
+    pkg: "blueberrypi"
+    exec: "dance"
+    name: "dance_1"
+    namespace: ""
