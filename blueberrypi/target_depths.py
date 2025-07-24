@@ -6,7 +6,7 @@ class SendDepth (Node):
     def __init__(self):
         super().__init__("depth_publisher")    # names the node when running
 
-        self.depth_time_list = [[3.0, 500.0]]
+        self.depth_time_list = [[0.0, 0.0]]
 
         self.start_time = self.get_time()
 

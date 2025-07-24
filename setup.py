@@ -24,7 +24,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'arm_disarm = blueberrypi.bluerov2_arm:yay',
+            'timed_arm_disarm = blueberrypi.timed_arm_disarm:yay',
             'dance = blueberrypi.bluerov2_dance:main',
             'depth_pid = blueberrypi.depth_pid:main',
             'pressure_depth = blueberrypi.pressure_depth:main',
@@ -32,6 +32,7 @@ setup(
             'heading_pid = blueberrypi.heading_pid:main',
             'move_forward = blueberrypi.translational_movement:main',
             'movement = blueberrypi.movement:main',
+            'arm = blueberrypi.arm:main',
         ],
     },
 )

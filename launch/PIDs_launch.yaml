@@ -9,11 +9,11 @@ launch:
     exec: "pressure_depth"
     name: "PressureToDepth"
     namespace: ""
-- node:
-    pkg: "blueberrypi"
-    exec: "target_depths"
-    name: "PubTargetDepths"
-    namespace: ""
+# - node:
+#     pkg: "blueberrypi"
+#     exec: "target_depths"
+#     name: "PubTargetDepths"
+#     namespace: ""
 - node:
     pkg: "blueberrypi"
     exec: "heading_pid"
@@ -29,4 +29,8 @@ launch:
     exec: "move_forward"
     name: "TranslationalMovement"
     namespace: ""
-
+- node:
+    pkg: "blueberrypi"
+    exec: "arm"
+    name: "Meow"
+    namespace: ""

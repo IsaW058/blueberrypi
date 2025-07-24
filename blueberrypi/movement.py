@@ -59,6 +59,7 @@ class Move(Node):
     
     
     def publish_movement(self):
+        self.get_logger().info(f"Movement vector: {self.final_msg.x} {self.final_msg.y} {self.final_msg.z} {self.final_msg.r}")
         self.pub.publish(self.final_msg)
     
     
