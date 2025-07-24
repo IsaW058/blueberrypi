@@ -2,9 +2,10 @@ import rclpy    # the ROS 2 client library for Python
 from rclpy.node import Node    # the ROS 2 Node class
 from mavros_msgs.msg import ManualControl    # the ManualControl message type definition
 import numpy as np
+from std_msgs.msg import Float32MultiArray
 
-TIMER_PERIOD = 1.0
-MOVEMENT_VECTOR = np.array([-80.0, 0.0])
+TIMER_PERIOD = 0.4
+MOVEMENT_VECTOR = np.array([0.0, 0.0])
 
 class Move(Node):
     def __init__(self):
@@ -14,6 +15,13 @@ class Move(Node):
             ManualControl,        # the message type
             "translational_movement",    # the topic name
             10              # QOS (will be covered later)
+        )
+
+        self.sub = self.create_subscription(
+            Float32MultiArray,
+            "target_translational",
+            self.set_translational,
+            10
         )
  
         self.timer = self.create_timer(
@@ -28,7 +36,12 @@ class Move(Node):
         self.msg.x = MOVEMENT_VECTOR[0]
         self.msg.y = MOVEMENT_VECTOR[1]
         self.pub.publish(self.msg)
-    
+        
+    def set_translational(self, msg):
+        global MOVEMENT_VECTOR
+        MOVEMENT_VECTOR[0] = msg.data[0]
+        MOVEMENT_VECTOR[1] = msg.data[1]
+
     
 
 def main(args=None):

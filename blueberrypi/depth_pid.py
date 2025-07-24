@@ -8,7 +8,7 @@ from std_msgs.msg import Float32
 
 STARTING_PRESSURE = 0 #volts
 G = 9.81
-TARGET_DEPTH = 0.0 
+TARGET_DEPTH = 0.0
 KP = 14
 KI = .55
 KD = 0
